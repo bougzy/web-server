@@ -1,10 +1,13 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware to extract real IP
 app.set('trust proxy', true);
+
+app.use(cors());
 
 app.get('/api/hello', async (req, res) => {
     const visitorName = req.query.visitor_name || 'Visitor';
