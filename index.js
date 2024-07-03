@@ -9,6 +9,11 @@ app.set('trust proxy', true);
 
 app.use(cors());
 
+// Root route to handle GET requests to "/"
+app.get('/', (req, res) => {
+    res.send('Welcome to the Express server!');
+});
+
 app.get('/api/hello', async (req, res) => {
     const visitorName = req.query.visitor_name || 'Visitor';
     let clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
